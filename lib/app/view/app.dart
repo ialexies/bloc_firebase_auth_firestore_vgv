@@ -9,8 +9,7 @@ import 'package:bloc_firebase_auth_firestore_vgv/blocs/auth/auth_bloc.dart';
 import 'package:bloc_firebase_auth_firestore_vgv/blocs/profile/profile_cubit.dart';
 import 'package:bloc_firebase_auth_firestore_vgv/blocs/signin/signin_cubit.dart';
 import 'package:bloc_firebase_auth_firestore_vgv/blocs/signup/signup_cubit.dart';
-import 'package:bloc_firebase_auth_firestore_vgv/counter/counter.dart';
-import 'package:bloc_firebase_auth_firestore_vgv/l10n/l10n.dart';
+
 import 'package:bloc_firebase_auth_firestore_vgv/pages/home_page.dart';
 import 'package:bloc_firebase_auth_firestore_vgv/pages/signin_page.dart';
 import 'package:bloc_firebase_auth_firestore_vgv/pages/signup_page.dart';
@@ -21,7 +20,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -71,11 +69,11 @@ class App extends StatelessWidget {
           theme: ThemeData(
             primarySwatch: Colors.blue,
           ),
-          home: SplashPage(),
+          home: const SplashPage(),
           routes: {
-            SignupPage.routeName: (context) => SignupPage(),
-            SigninPage.routeName: (context) => SigninPage(),
-            HomePage.routeName: (context) => HomePage(),
+            SignupPage.routeName: (context) => const SignupPage(),
+            SigninPage.routeName: (context) => const SigninPage(),
+            HomePage.routeName: (context) => const HomePage(),
           },
         ),
       ),

@@ -6,7 +6,7 @@ class CustomError extends Equatable {
   final String message;
   final String plugin;
 
-  CustomError({this.code = '', this.message = '', this.plugin = ''});
+  const CustomError({this.code = '', this.message = '', this.plugin = ''});
 
   @override
   List<Object> get props => [code, message, plugin];

@@ -8,10 +8,10 @@ abstract class AuthEvent extends Equatable {
 }
 
 class AuthStateChangedEvent extends AuthEvent {
-  final fbAuth.User? user;
-  AuthStateChangedEvent({
+  const AuthStateChangedEvent({
     this.user,
   });
+  final fb_auth.User? user;
 
   @override
   List<Object?> get props => [user];

@@ -1,13 +1,10 @@
 import 'dart:io';
 
+import 'package:bloc_firebase_auth_firestore_vgv/models/custom_error.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../models/custom_error.dart';
-
 void errorDialog(BuildContext context, CustomError e) {
-  print('code: ${e.code}\nmessage: ${e.message}\nplugin: ${e.plugin}\n');
-
   if (Platform.isIOS) {
     showCupertinoDialog(
       context: context,
@@ -17,7 +14,7 @@ void errorDialog(BuildContext context, CustomError e) {
           content: Text(e.plugin + '\n' + e.message),
           actions: [
             CupertinoDialogAction(
-              child: Text('OK'),
+              child: const Text('OK'),
               onPressed: () => Navigator.pop(context),
             ),
           ],
@@ -33,7 +30,7 @@ void errorDialog(BuildContext context, CustomError e) {
           content: Text(e.plugin + '\n' + e.message),
           actions: [
             TextButton(
-              child: Text('OK'),
+              child: const Text('OK'),
               onPressed: () => Navigator.pop(context),
             ),
           ],

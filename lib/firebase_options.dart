@@ -39,6 +39,7 @@ class DefaultFirebaseOptions {
           'DefaultFirebaseOptions have not been configured for linux - '
           'you can reconfigure this by running the FlutterFire CLI again.',
         );
+      // ignore: no_default_cases
       default:
         throw UnsupportedError(
           'DefaultFirebaseOptions are not supported for this platform.',
@@ -69,7 +70,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '818978899713',
     projectId: 'bloc-fbauth-firestore-vgv',
     storageBucket: 'bloc-fbauth-firestore-vgv.appspot.com',
-    iosClientId: '818978899713-o8of97qan541thehoh76uke6cle7cv0q.apps.googleusercontent.com',
+    iosClientId:
+        '818978899713-o8of97qan541thehoh76uke6cle7cv0q.apps.googleusercontent.com',
     iosBundleId: 'com.example.verygoodcore.bloc-firebase-auth-firestore-vgv',
   );
 }

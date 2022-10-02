@@ -6,7 +6,7 @@
 // https://opensource.org/licenses/MIT.
 
 import 'package:bloc_firebase_auth_firestore_vgv/app/app.dart';
-import 'package:bloc_firebase_auth_firestore_vgv/bootstrap.dart';
+
 import 'package:bloc_firebase_auth_firestore_vgv/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/widgets.dart';
@@ -16,5 +16,5 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(App());
+  runApp(const App());
 }

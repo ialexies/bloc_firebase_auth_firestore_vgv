@@ -4,16 +4,14 @@ import 'package:bloc/bloc.dart';
 import 'package:bloc_firebase_auth_firestore_vgv/repositories/auth_repository.dart';
 import 'package:equatable/equatable.dart';
 
-import 'package:firebase_auth/firebase_auth.dart' as fbAuth;
+import 'package:firebase_auth/firebase_auth.dart' as fb_auth;
 
 part 'auth_event.dart';
 part 'auth_state.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
-  late final StreamSubscription authSubsription;
-  final AuthRepository authRepository;
   AuthBloc({required this.authRepository}) : super(AuthState.unknown()) {
-    authSubsription = authRepository.user.listen((fbAuth.User? user) {
+    authSubsription = authRepository.user.listen((fb_auth.User? user) {
       add(AuthStateChangedEvent(user: user));
     });
 
@@ -39,4 +37,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       await authRepository.signout();
     });
   }
+  late final StreamSubscription authSubsription;
+  final AuthRepository authRepository;
 }

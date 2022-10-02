@@ -8,10 +8,7 @@ enum ProfileStatus {
 }
 
 class ProfileState extends Equatable {
-  final ProfileStatus profileStatus;
-  final User user;
-  final CustomError error;
-  ProfileState({
+  const ProfileState({
     required this.profileStatus,
     required this.user,
     required this.error,
@@ -21,9 +18,12 @@ class ProfileState extends Equatable {
     return ProfileState(
       profileStatus: ProfileStatus.initial,
       user: User.initialUser(),
-      error: CustomError(),
+      error: const CustomError(),
     );
   }
+  final ProfileStatus profileStatus;
+  final User user;
+  final CustomError error;
 
   @override
   List<Object> get props => [profileStatus, user, error];

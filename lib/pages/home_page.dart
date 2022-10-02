@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomePage extends StatefulWidget {
+  const HomePage({super.key});
   static const String routeName = '/home';
-  const HomePage({Key? key}) : super(key: key);
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -19,24 +19,26 @@ class _HomePageState extends State<HomePage> {
       child: Scaffold(
         appBar: AppBar(
           automaticallyImplyLeading: false,
-          title: Text('Home'),
+          title: const Text('Home'),
           actions: [
             IconButton(
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) {
-                    return ProfilePage();
-                  }),
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return const ProfilePage();
+                    },
+                  ),
                 );
               },
-              icon: Icon(Icons.account_circle),
+              icon: const Icon(Icons.account_circle),
             ),
             IconButton(
               onPressed: () {
                 context.read<AuthBloc>().add(SignoutRequestedEvent());
               },
-              icon: Icon(Icons.exit_to_app),
+              icon: const Icon(Icons.exit_to_app),
             ),
           ],
         ),
@@ -48,11 +50,11 @@ class _HomePageState extends State<HomePage> {
                 'assets/images/bloc_logo_full.png',
                 width: MediaQuery.of(context).size.width * 0.8,
               ),
-              SizedBox(height: 20.0),
-              Text(
+              const SizedBox(height: 20),
+              const Text(
                 'Bloc is an awesome\nstate management library\nfor flutter!',
                 textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 24.0),
+                style: TextStyle(fontSize: 24),
               ),
             ],
           ),

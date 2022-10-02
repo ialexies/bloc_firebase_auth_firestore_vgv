@@ -5,10 +5,10 @@ import 'package:bloc_firebase_auth_firestore_vgv/models/user_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class ProfileRepository {
-  final FirebaseFirestore firebaseFirestore;
   ProfileRepository({
     required this.firebaseFirestore,
   });
+  final FirebaseFirestore firebaseFirestore;
 
   Future<User> getProfile({required String uid}) async {
     try {

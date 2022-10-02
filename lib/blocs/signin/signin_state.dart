@@ -8,19 +8,19 @@ enum SigninStatus {
 }
 
 class SigninState extends Equatable {
-  final SigninStatus signinStatus;
-  final CustomError error;
-  SigninState({
+  const SigninState({
     required this.signinStatus,
     required this.error,
   });
 
   factory SigninState.initial() {
-    return SigninState(
+    return const SigninState(
       signinStatus: SigninStatus.initial,
       error: CustomError(),
     );
   }
+  final SigninStatus signinStatus;
+  final CustomError error;
 
   @override
   List<Object> get props => [signinStatus, error];

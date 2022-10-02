@@ -2,12 +2,12 @@ import 'package:bloc_firebase_auth_firestore_vgv/blocs/signin/signin_cubit.dart'
 import 'package:bloc_firebase_auth_firestore_vgv/pages/signup_page.dart';
 import 'package:bloc_firebase_auth_firestore_vgv/utils/error_dialog.dart';
 import 'package:flutter/material.dart';
-import 'package:validators/validators.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:validators/validators.dart';
 
 class SigninPage extends StatefulWidget {
+  const SigninPage({super.key});
   static const String routeName = '/signin';
-  const SigninPage({Key? key}) : super(key: key);
 
   @override
   _SigninPageState createState() => _SigninPageState();
@@ -29,8 +29,6 @@ class _SigninPageState extends State<SigninPage> {
 
     form.save();
 
-    print('email: $_email, password: $_password');
-
     context.read<SigninCubit>().signin(email: _email!, password: _password!);
   }
 
@@ -51,7 +49,7 @@ class _SigninPageState extends State<SigninPage> {
               backgroundColor: Colors.white,
               body: Center(
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 30.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 30),
                   child: Form(
                     key: _formKey,
                     autovalidateMode: _autovalidateMode,
@@ -63,11 +61,11 @@ class _SigninPageState extends State<SigninPage> {
                           width: 250,
                           height: 250,
                         ),
-                        SizedBox(height: 20.0),
+                        const SizedBox(height: 20),
                         TextFormField(
                           keyboardType: TextInputType.emailAddress,
                           autocorrect: false,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             border: OutlineInputBorder(),
                             filled: true,
                             labelText: 'Email',
@@ -86,10 +84,10 @@ class _SigninPageState extends State<SigninPage> {
                             _email = value;
                           },
                         ),
-                        SizedBox(height: 20.0),
+                        const SizedBox(height: 20),
                         TextFormField(
                           obscureText: true,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             border: OutlineInputBorder(),
                             filled: true,
                             labelText: 'Password',
@@ -108,40 +106,43 @@ class _SigninPageState extends State<SigninPage> {
                             _password = value;
                           },
                         ),
-                        SizedBox(height: 20.0),
+                        const SizedBox(height: 20),
                         ElevatedButton(
                           onPressed:
                               state.signinStatus == SigninStatus.submitting
                                   ? null
                                   : _submit,
-                          child: Text(
-                              state.signinStatus == SigninStatus.submitting
-                                  ? 'Loading...'
-                                  : 'Sign In'),
                           style: ElevatedButton.styleFrom(
-                            textStyle: TextStyle(
-                              fontSize: 20.0,
+                            textStyle: const TextStyle(
+                              fontSize: 20,
                               fontWeight: FontWeight.bold,
                             ),
-                            padding: const EdgeInsets.symmetric(vertical: 10.0),
+                            padding: const EdgeInsets.symmetric(vertical: 10),
+                          ),
+                          child: Text(
+                            state.signinStatus == SigninStatus.submitting
+                                ? 'Loading...'
+                                : 'Sign In',
                           ),
                         ),
-                        SizedBox(height: 10.0),
+                        const SizedBox(height: 10),
                         TextButton(
                           onPressed:
                               state.signinStatus == SigninStatus.submitting
                                   ? null
                                   : () {
                                       Navigator.pushNamed(
-                                          context, SignupPage.routeName);
+                                        context,
+                                        SignupPage.routeName,
+                                      );
                                     },
-                          child: Text('Not a member? Sign Up!'),
                           style: TextButton.styleFrom(
-                            textStyle: TextStyle(
-                              fontSize: 20.0,
+                            textStyle: const TextStyle(
+                              fontSize: 20,
                               decoration: TextDecoration.underline,
                             ),
                           ),
+                          child: const Text('Not a member? Sign Up!'),
                         ),
                       ],
                     ),

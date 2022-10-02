@@ -1,14 +1,12 @@
+import 'package:bloc_firebase_auth_firestore_vgv/blocs/signup/signup_cubit.dart';
+import 'package:bloc_firebase_auth_firestore_vgv/utils/error_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:validators/validators.dart';
 
-import '../blocs/signup/signup_cubit.dart';
-import '../utils/error_dialog.dart';
-
 class SignupPage extends StatefulWidget {
+  const SignupPage({super.key});
   static const String routeName = '/signup';
-
-  const SignupPage({Key? key}) : super(key: key);
 
   @override
   _SignupPageState createState() => _SignupPageState();
@@ -31,8 +29,6 @@ class _SignupPageState extends State<SignupPage> {
 
     form.save();
 
-    print('name: $_name, email: $_email, password: $_password');
-
     context.read<SignupCubit>().signup(
           name: _name!,
           email: _email!,
@@ -47,7 +43,6 @@ class _SignupPageState extends State<SignupPage> {
       child: BlocConsumer<SignupCubit, SignupState>(
         listener: (context, state) {
           if (state.signupStatus == SignupStatus.error) {
-            print('signup error');
             errorDialog(context, state.error);
           }
         },
@@ -56,7 +51,7 @@ class _SignupPageState extends State<SignupPage> {
             backgroundColor: Colors.white,
             body: Center(
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 30.0),
+                padding: const EdgeInsets.symmetric(horizontal: 30),
                 child: Form(
                   key: _formKey,
                   autovalidateMode: _autovalidateMode,
@@ -69,9 +64,9 @@ class _SignupPageState extends State<SignupPage> {
                         width: 250,
                         height: 250,
                       ),
-                      SizedBox(height: 20.0),
+                      const SizedBox(height: 20),
                       TextFormField(
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           border: OutlineInputBorder(),
                           filled: true,
                           labelText: 'Name',
@@ -90,11 +85,11 @@ class _SignupPageState extends State<SignupPage> {
                           _name = value;
                         },
                       ),
-                      SizedBox(height: 20.0),
+                      const SizedBox(height: 20),
                       TextFormField(
                         keyboardType: TextInputType.emailAddress,
                         autocorrect: false,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           border: OutlineInputBorder(),
                           filled: true,
                           labelText: 'Email',
@@ -113,11 +108,11 @@ class _SignupPageState extends State<SignupPage> {
                           _email = value;
                         },
                       ),
-                      SizedBox(height: 20.0),
+                      const SizedBox(height: 20),
                       TextFormField(
                         controller: _passwordController,
                         obscureText: true,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           border: OutlineInputBorder(),
                           filled: true,
                           labelText: 'Password',
@@ -136,10 +131,10 @@ class _SignupPageState extends State<SignupPage> {
                           _password = value;
                         },
                       ),
-                      SizedBox(height: 20.0),
+                      const SizedBox(height: 20),
                       TextFormField(
                         obscureText: true,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           border: OutlineInputBorder(),
                           filled: true,
                           labelText: 'Confirm password',
@@ -152,18 +147,18 @@ class _SignupPageState extends State<SignupPage> {
                           return null;
                         },
                       ),
-                      SizedBox(height: 20.0),
+                      const SizedBox(height: 20),
                       ElevatedButton(
                         onPressed: state.signupStatus == SignupStatus.submitting
                             ? null
                             : _submit,
                         style: ElevatedButton.styleFrom(
-                          textStyle: TextStyle(
-                            fontSize: 20.0,
+                          textStyle: const TextStyle(
+                            fontSize: 20,
                             fontWeight: FontWeight.w600,
                           ),
                           padding: const EdgeInsets.symmetric(
-                            vertical: 10.0,
+                            vertical: 10,
                           ),
                         ),
                         child: Text(
@@ -172,7 +167,7 @@ class _SignupPageState extends State<SignupPage> {
                               : 'Sign Up',
                         ),
                       ),
-                      const SizedBox(height: 10.0),
+                      const SizedBox(height: 10),
                       TextButton(
                         onPressed: state.signupStatus == SignupStatus.submitting
                             ? null
@@ -180,14 +175,14 @@ class _SignupPageState extends State<SignupPage> {
                                 Navigator.pop(context);
                               },
                         style: TextButton.styleFrom(
-                          textStyle: TextStyle(
-                            fontSize: 20.0,
+                          textStyle: const TextStyle(
+                            fontSize: 20,
                             fontWeight: FontWeight.w600,
                             decoration: TextDecoration.underline,
                           ),
-                          padding: const EdgeInsets.symmetric(vertical: 10.0),
+                          padding: const EdgeInsets.symmetric(vertical: 10),
                         ),
-                        child: Text('Already a member? Sign in!'),
+                        child: const Text('Already a member? Sign in!'),
                       ),
                     ].reversed.toList(),
                   ),

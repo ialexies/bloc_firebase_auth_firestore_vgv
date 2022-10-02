@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SplashPage extends StatelessWidget {
+  const SplashPage({super.key});
   static const String routeName = '/';
-  const SplashPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,9 +17,6 @@ class SplashPage extends StatelessWidget {
             context,
             SigninPage.routeName,
             (route) {
-              print('route.settings.name: ${route.settings.name}');
-              print('ModalRoute: ${ModalRoute.of(context)!.settings.name}');
-
               return route.settings.name ==
                       ModalRoute.of(context)!.settings.name
                   ? true
@@ -31,7 +28,7 @@ class SplashPage extends StatelessWidget {
         }
       },
       builder: (context, state) {
-        return Scaffold(
+        return const Scaffold(
           body: Center(
             child: CircularProgressIndicator(),
           ),

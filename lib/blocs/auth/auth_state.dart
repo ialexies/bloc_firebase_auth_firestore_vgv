@@ -7,16 +7,16 @@ enum AuthStatus {
 }
 
 class AuthState extends Equatable {
-  final AuthStatus authStatus;
-  final fbAuth.User? user;
-  AuthState({
+  const AuthState({
     required this.authStatus,
     this.user,
   });
 
   factory AuthState.unknown() {
-    return AuthState(authStatus: AuthStatus.unknown);
+    return const AuthState(authStatus: AuthStatus.unknown);
   }
+  final AuthStatus authStatus;
+  final fb_auth.User? user;
 
   @override
   List<Object?> get props => [authStatus, user];
@@ -26,7 +26,7 @@ class AuthState extends Equatable {
 
   AuthState copyWith({
     AuthStatus? authStatus,
-    fbAuth.User? user,
+    fb_auth.User? user,
   }) {
     return AuthState(
       authStatus: authStatus ?? this.authStatus,
