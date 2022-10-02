@@ -1,6 +1,7 @@
 import 'package:bloc_firebase_auth_firestore_vgv/constants/db_constants.dart';
 import 'package:bloc_firebase_auth_firestore_vgv/models/custom_error.dart';
 import 'package:bloc_firebase_auth_firestore_vgv/models/user_model.dart';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class ProfileRepository {
