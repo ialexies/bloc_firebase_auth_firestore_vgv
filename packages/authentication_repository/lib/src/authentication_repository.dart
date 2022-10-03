@@ -5,5 +5,10 @@
 // license that can be found in the LICENSE file or at
 // https://opensource.org/licenses/MIT.
 
-export 'cubit/counter_cubit.dart';
-export 'view/counter_page.dart';
+/// {@template authentication_repository}
+/// A Very Good Project created by Very Good CLI.
+/// {@endtemplate}
+class AuthenticationRepository {
+  /// {@macro authentication_repository}
+  const AuthenticationRepository();
+}

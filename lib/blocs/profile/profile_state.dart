@@ -17,12 +17,12 @@ class ProfileState extends Equatable {
   factory ProfileState.initial() {
     return ProfileState(
       profileStatus: ProfileStatus.initial,
-      user: User.initialUser(),
+      user: my_auth_repo.User.initialUser(),
       error: const CustomError(),
     );
   }
   final ProfileStatus profileStatus;
-  final User user;
+  final my_auth_repo.User user;
   final CustomError error;
 
   @override
@@ -34,7 +34,7 @@ class ProfileState extends Equatable {
 
   ProfileState copyWith({
     ProfileStatus? profileStatus,
-    User? user,
+    my_auth_repo.User? user,
     CustomError? error,
   }) {
     return ProfileState(

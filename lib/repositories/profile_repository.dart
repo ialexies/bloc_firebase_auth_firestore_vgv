@@ -1,7 +1,7 @@
+import 'package:authentication_repository/authentication_repository.dart'
+    as my_auth_repo;
 import 'package:bloc_firebase_auth_firestore_vgv/constants/db_constants.dart';
 import 'package:bloc_firebase_auth_firestore_vgv/models/custom_error.dart';
-import 'package:bloc_firebase_auth_firestore_vgv/models/user_model.dart';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class ProfileRepository {
@@ -10,12 +10,12 @@ class ProfileRepository {
   });
   final FirebaseFirestore firebaseFirestore;
 
-  Future<User> getProfile({required String uid}) async {
+  Future<my_auth_repo.User> getProfile({required String uid}) async {
     try {
       final DocumentSnapshot userDoc = await usersRef.doc(uid).get();
 
       if (userDoc.exists) {
-        final currentUser = User.fromDoc(userDoc);
+        final currentUser = my_auth_repo.User.fromDoc(userDoc);
         return currentUser;
       }
 

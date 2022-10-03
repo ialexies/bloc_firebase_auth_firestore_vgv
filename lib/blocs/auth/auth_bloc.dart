@@ -27,6 +27,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         emit(
           state.copyWith(
             authStatus: AuthStatus.unauthenticated,
+            // ignore: avoid_redundant_argument_values
             user: null,
           ),
         );
