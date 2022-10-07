@@ -1,6 +1,6 @@
+import 'package:authentication_repository/authentication_repository.dart';
 import 'package:bloc/bloc.dart';
-import 'package:bloc_firebase_auth_firestore_vgv/models/custom_error.dart';
-import 'package:bloc_firebase_auth_firestore_vgv/repositories/auth_repository.dart';
+
 import 'package:equatable/equatable.dart';
 
 part 'signin_state.dart';
@@ -19,7 +19,7 @@ class SigninCubit extends Cubit<SigninState> {
       await authRepository.signin(email: email, password: password);
 
       emit(state.copyWith(signinStatus: SigninStatus.success));
-    } on CustomError catch (e) {
+    } on FirebaseAuthApiFailure catch (e) {
       emit(
         state.copyWith(
           signinStatus: SigninStatus.error,

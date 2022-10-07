@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bloc_firebase_auth_firestore_vgv/blocs/auth/auth_bloc.dart';
 import 'package:bloc_firebase_auth_firestore_vgv/blocs/profile/profile_cubit.dart';
 import 'package:bloc_firebase_auth_firestore_vgv/utils/error_dialog.dart';
@@ -32,7 +34,9 @@ class _ProfilePageState extends State<ProfilePage> {
       body: BlocConsumer<ProfileCubit, ProfileState>(
         listener: (context, state) {
           if (state.profileStatus == ProfileStatus.error) {
-            errorDialog(context, state.error);
+            ///TODO(ialexies): add error for this eception
+            log('error in profile status');
+            // errorDialog(context, state.error);
           }
         },
         builder: (context, state) {

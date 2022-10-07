@@ -16,11 +16,11 @@ class SigninState extends Equatable {
   factory SigninState.initial() {
     return const SigninState(
       signinStatus: SigninStatus.initial,
-      error: CustomError(),
+      error: FirebaseAuthApiFailure(),
     );
   }
   final SigninStatus signinStatus;
-  final CustomError error;
+  final FirebaseAuthApiFailure error;
 
   @override
   List<Object> get props => [signinStatus, error];
@@ -31,7 +31,7 @@ class SigninState extends Equatable {
 
   SigninState copyWith({
     SigninStatus? signinStatus,
-    CustomError? error,
+    FirebaseAuthApiFailure? error,
   }) {
     return SigninState(
       signinStatus: signinStatus ?? this.signinStatus,

@@ -1,11 +1,9 @@
 import 'dart:async';
 
+import 'package:authentication_repository/authentication_repository.dart';
 import 'package:bloc/bloc.dart';
-import 'package:bloc_firebase_auth_firestore_vgv/repositories/auth_repository.dart';
 import 'package:equatable/equatable.dart';
-
 import 'package:firebase_auth/firebase_auth.dart' as fb_auth;
-
 part 'auth_event.dart';
 part 'auth_state.dart';
 

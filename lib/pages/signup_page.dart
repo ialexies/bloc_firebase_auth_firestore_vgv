@@ -43,7 +43,8 @@ class _SignupPageState extends State<SignupPage> {
       child: BlocConsumer<SignupCubit, SignupState>(
         listener: (context, state) {
           if (state.signupStatus == SignupStatus.error) {
-            errorDialog(context, state.error);
+            errorDialog(context, state.error.message, state.error.code,
+                state.error.plugin);
           }
         },
         builder: (context, state) {
