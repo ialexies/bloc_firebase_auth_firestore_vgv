@@ -18,7 +18,7 @@ class ProfileState extends Equatable {
     return ProfileState(
       profileStatus: ProfileStatus.initial,
       user: my_auth_repo.User.initialUser(),
-      error: const CustomError(),
+      error: CustomError(),
     );
   }
   final ProfileStatus profileStatus;

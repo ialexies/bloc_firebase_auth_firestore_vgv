@@ -1,6 +1,7 @@
 import 'package:authentication_repository/authentication_repository.dart';
 import 'package:bloc/bloc.dart';
 import 'package:bloc_firebase_auth_firestore_vgv/models/custom_error.dart';
+
 import 'package:equatable/equatable.dart';
 part 'signup_state.dart';
 

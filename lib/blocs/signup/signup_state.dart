@@ -13,7 +13,7 @@ class SignupState extends Equatable {
     required this.error,
   });
   factory SignupState.initial() {
-    return const SignupState(
+    return SignupState(
       signupStatus: SignupStatus.initial,
       error: CustomError(),
     );
