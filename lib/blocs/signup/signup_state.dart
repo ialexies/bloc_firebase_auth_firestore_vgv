@@ -7,34 +7,17 @@ enum SignupStatus {
   error,
 }
 
-class SignupState extends Equatable {
-  const SignupState({
-    required this.signupStatus,
-    required this.error,
-  });
+@freezed
+class SignupState with _$SignupState {
+  const factory SignupState({
+    required SignupStatus signupStatus,
+    required CustomError error,
+  }) = _SignupState;
+
   factory SignupState.initial() {
     return SignupState(
       signupStatus: SignupStatus.initial,
       error: CustomError(),
-    );
-  }
-  final SignupStatus signupStatus;
-  final CustomError error;
-
-  @override
-  List<Object> get props => [signupStatus, error];
-
-  @override
-  String toString() =>
-      'SignupState(signupStatus: $signupStatus, error: $error)';
-
-  SignupState copyWith({
-    SignupStatus? signupStatus,
-    CustomError? error,
-  }) {
-    return SignupState(
-      signupStatus: signupStatus ?? this.signupStatus,
-      error: error ?? this.error,
     );
   }
 }

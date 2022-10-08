@@ -2,8 +2,9 @@ import 'package:authentication_repository/authentication_repository.dart';
 import 'package:bloc/bloc.dart';
 import 'package:bloc_firebase_auth_firestore_vgv/models/custom_error.dart';
 
-import 'package:equatable/equatable.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 part 'signup_state.dart';
+part 'signup_cubit.freezed.dart';
 
 class SignupCubit extends Cubit<SignupState> {
   SignupCubit({
