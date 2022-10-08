@@ -4,8 +4,19 @@ class CustomError {
   String code;
   String message;
   String plugin;
+  CustomError({
+    required this.code,
+    required this.message,
+    required this.plugin,
+  });
 
-  CustomError({this.code = '', this.message = '', this.plugin = ''});
+  factory CustomError.initial() {
+    return CustomError(
+      code: '',
+      message: '',
+      plugin: '',
+    );
+  }
 
   CustomError copyWith({
     String? code,

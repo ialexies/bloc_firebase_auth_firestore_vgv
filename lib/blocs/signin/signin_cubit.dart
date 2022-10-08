@@ -6,7 +6,7 @@ part 'signin_state.dart';
 part 'signin_cubit.freezed.dart';
 
 class SigninCubit extends Cubit<SigninState> {
-  SigninCubit({required this.authRepository}) : super(SigninState.initial());
+  SigninCubit({required this.authRepository}) : super(const SigninState());
   final AuthRepository authRepository;
 
   Future<void> signin({

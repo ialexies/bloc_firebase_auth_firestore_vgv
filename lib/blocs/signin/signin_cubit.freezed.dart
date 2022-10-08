@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$SigninState {
-  SigninStatus get signinStatus => throw _privateConstructorUsedError;
+  SigninStatus? get signinStatus => throw _privateConstructorUsedError;
   FirebaseAuthApiFailure get error => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -29,7 +29,7 @@ abstract class $SigninStateCopyWith<$Res> {
   factory $SigninStateCopyWith(
           SigninState value, $Res Function(SigninState) then) =
       _$SigninStateCopyWithImpl<$Res>;
-  $Res call({SigninStatus signinStatus, FirebaseAuthApiFailure error});
+  $Res call({SigninStatus? signinStatus, FirebaseAuthApiFailure error});
 }
 
 /// @nodoc
@@ -49,7 +49,7 @@ class _$SigninStateCopyWithImpl<$Res> implements $SigninStateCopyWith<$Res> {
       signinStatus: signinStatus == freezed
           ? _value.signinStatus
           : signinStatus // ignore: cast_nullable_to_non_nullable
-              as SigninStatus,
+              as SigninStatus?,
       error: error == freezed
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -65,7 +65,7 @@ abstract class _$$_SigninStateCopyWith<$Res>
           _$_SigninState value, $Res Function(_$_SigninState) then) =
       __$$_SigninStateCopyWithImpl<$Res>;
   @override
-  $Res call({SigninStatus signinStatus, FirebaseAuthApiFailure error});
+  $Res call({SigninStatus? signinStatus, FirebaseAuthApiFailure error});
 }
 
 /// @nodoc
@@ -87,7 +87,7 @@ class __$$_SigninStateCopyWithImpl<$Res> extends _$SigninStateCopyWithImpl<$Res>
       signinStatus: signinStatus == freezed
           ? _value.signinStatus
           : signinStatus // ignore: cast_nullable_to_non_nullable
-              as SigninStatus,
+              as SigninStatus?,
       error: error == freezed
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -99,11 +99,15 @@ class __$$_SigninStateCopyWithImpl<$Res> extends _$SigninStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_SigninState implements _SigninState {
-  const _$_SigninState({required this.signinStatus, required this.error});
+  const _$_SigninState(
+      {this.signinStatus = SigninStatus.initial,
+      this.error = const FirebaseAuthApiFailure()});
 
   @override
-  final SigninStatus signinStatus;
+  @JsonKey()
+  final SigninStatus? signinStatus;
   @override
+  @JsonKey()
   final FirebaseAuthApiFailure error;
 
   @override
@@ -135,11 +139,11 @@ class _$_SigninState implements _SigninState {
 
 abstract class _SigninState implements SigninState {
   const factory _SigninState(
-      {required final SigninStatus signinStatus,
-      required final FirebaseAuthApiFailure error}) = _$_SigninState;
+      {final SigninStatus? signinStatus,
+      final FirebaseAuthApiFailure error}) = _$_SigninState;
 
   @override
-  SigninStatus get signinStatus;
+  SigninStatus? get signinStatus;
   @override
   FirebaseAuthApiFailure get error;
   @override

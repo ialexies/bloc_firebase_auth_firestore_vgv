@@ -6,14 +6,7 @@ enum SigninStatus { initial, submitting, success, error }
 @freezed
 class SigninState with _$SigninState {
   const factory SigninState({
-    required SigninStatus signinStatus,
-    required FirebaseAuthApiFailure error,
+    @Default(SigninStatus.initial) SigninStatus? signinStatus,
+    @Default(FirebaseAuthApiFailure()) FirebaseAuthApiFailure error,
   }) = _SigninState;
-
-  factory SigninState.initial() {
-    return const SigninState(
-      signinStatus: SigninStatus.initial,
-      error: FirebaseAuthApiFailure(),
-    );
-  }
 }
