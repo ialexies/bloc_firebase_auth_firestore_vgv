@@ -1,22 +1,21 @@
 import 'dart:io';
 
-import 'package:bloc_firebase_auth_firestore_vgv/models/custom_error.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-void errorDialog(
+Future<Widget> errorDialog(
   BuildContext context,
   String errorMessage,
   String errorCode,
   String errorPlugin,
-) {
+) async {
   if (Platform.isIOS) {
-    showCupertinoDialog(
+    await showCupertinoDialog<Widget>(
       context: context,
       builder: (context) {
         return CupertinoAlertDialog(
           title: Text(errorCode),
-          content: Text(errorPlugin + '\n' + errorMessage),
+          content: Text('$errorPlugin\n$errorMessage'),
           actions: [
             CupertinoDialogAction(
               child: const Text('OK'),
@@ -27,12 +26,12 @@ void errorDialog(
       },
     );
   } else {
-    showDialog(
+    await showDialog<Widget>(
       context: context,
       builder: (context) {
         return AlertDialog(
           title: Text(errorCode),
-          content: Text(errorPlugin + '\n' + errorMessage),
+          content: Text('$errorPlugin\n$errorMessage'),
           actions: [
             TextButton(
               child: const Text('OK'),
@@ -43,4 +42,5 @@ void errorDialog(
       },
     );
   }
+  return const SizedBox.shrink();
 }
