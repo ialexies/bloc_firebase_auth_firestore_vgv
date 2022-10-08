@@ -1,9 +1,9 @@
 import 'package:authentication_repository/authentication_repository.dart';
 import 'package:bloc/bloc.dart';
 
-import 'package:equatable/equatable.dart';
-
+import 'package:freezed_annotation/freezed_annotation.dart';
 part 'signin_state.dart';
+part 'signin_cubit.freezed.dart';
 
 class SigninCubit extends Cubit<SigninState> {
   SigninCubit({required this.authRepository}) : super(SigninState.initial());

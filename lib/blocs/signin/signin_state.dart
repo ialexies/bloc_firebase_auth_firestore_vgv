@@ -1,41 +1,19 @@
 part of 'signin_cubit.dart';
 
-enum SigninStatus {
-  initial,
-  submitting,
-  success,
-  error,
-}
+// part 'signin_state.freezed.dart';
+enum SigninStatus { initial, submitting, success, error }
 
-class SigninState extends Equatable {
-  const SigninState({
-    required this.signinStatus,
-    required this.error,
-  });
+@freezed
+class SigninState with _$SigninState {
+  const factory SigninState({
+    required SigninStatus signinStatus,
+    required FirebaseAuthApiFailure error,
+  }) = _SigninState;
 
   factory SigninState.initial() {
     return const SigninState(
       signinStatus: SigninStatus.initial,
       error: FirebaseAuthApiFailure(),
-    );
-  }
-  final SigninStatus signinStatus;
-  final FirebaseAuthApiFailure error;
-
-  @override
-  List<Object> get props => [signinStatus, error];
-
-  @override
-  String toString() =>
-      'SigninState(signinStatus: $signinStatus, error: $error)';
-
-  SigninState copyWith({
-    SigninStatus? signinStatus,
-    FirebaseAuthApiFailure? error,
-  }) {
-    return SigninState(
-      signinStatus: signinStatus ?? this.signinStatus,
-      error: error ?? this.error,
     );
   }
 }
