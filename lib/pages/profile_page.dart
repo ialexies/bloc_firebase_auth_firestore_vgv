@@ -2,7 +2,6 @@ import 'dart:developer';
 
 import 'package:bloc_firebase_auth_firestore_vgv/blocs/auth/auth_bloc.dart';
 import 'package:bloc_firebase_auth_firestore_vgv/blocs/profile/profile_cubit.dart';
-import 'package:bloc_firebase_auth_firestore_vgv/utils/error_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -10,10 +9,10 @@ class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
 
   @override
-  _ProfilePageState createState() => _ProfilePageState();
+  ProfilePageState createState() => ProfilePageState();
 }
 
-class _ProfilePageState extends State<ProfilePage> {
+class ProfilePageState extends State<ProfilePage> {
   @override
   void initState() {
     super.initState();
@@ -34,7 +33,7 @@ class _ProfilePageState extends State<ProfilePage> {
       body: BlocConsumer<ProfileCubit, ProfileState>(
         listener: (context, state) {
           if (state.profileStatus == ProfileStatus.error) {
-            ///TODO(ialexies): add error for this eception
+            //TODO(ialexies): add error for this eception
             log('error in profile status');
             // errorDialog(context, state.error);
           }

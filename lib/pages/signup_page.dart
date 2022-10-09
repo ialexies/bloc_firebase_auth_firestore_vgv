@@ -9,10 +9,10 @@ class SignupPage extends StatefulWidget {
   static const String routeName = '/signup';
 
   @override
-  _SignupPageState createState() => _SignupPageState();
+  SignupPageState createState() => SignupPageState();
 }
 
-class _SignupPageState extends State<SignupPage> {
+class SignupPageState extends State<SignupPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   AutovalidateMode _autovalidateMode = AutovalidateMode.disabled;
   final _passwordController = TextEditingController();
@@ -43,8 +43,12 @@ class _SignupPageState extends State<SignupPage> {
       child: BlocConsumer<SignupCubit, SignupState>(
         listener: (context, state) {
           if (state.signupStatus == SignupStatus.error) {
-            errorDialog(context, state.error.message, state.error.code,
-                state.error.plugin);
+            errorDialog(
+              context,
+              state.error.message,
+              state.error.code,
+              state.error.plugin,
+            );
           }
         },
         builder: (context, state) {

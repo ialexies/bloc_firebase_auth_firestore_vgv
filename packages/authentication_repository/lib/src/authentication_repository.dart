@@ -8,14 +8,19 @@ import 'package:firebase_auth/firebase_auth.dart';
 /// Firaebause API Eception
 class FirebaseAuthApiFailure implements Exception {
   ///
-  const FirebaseAuthApiFailure(
-      [this.message = 'An unknown exception occurred',
-      this.code = 'An unknown exeption code',
-      this.plugin = 'An unknown plugin exception']);
+  const FirebaseAuthApiFailure([
+    this.message = 'An unknown exception occurred',
+    this.code = 'An unknown exeption code',
+    this.plugin = 'An unknown plugin exception',
+  ]);
 
   /// error message
   final String message;
+
+  /// error code
   final String code;
+
+  /// error plugin
   final String plugin;
 
   @override
@@ -44,6 +49,7 @@ class AuthRepository {
   ///
   Stream<fb_auth.User?> get user => firebaseAuth.userChanges();
 
+  /// Firebase Signup
   Future<void> signup({
     required String name,
     required String email,
@@ -81,16 +87,17 @@ class AuthRepository {
     }
   }
 
+  /// Signin
   Future<UserCredential?> signin({
     required String email,
     required String password,
   }) async {
     try {
-      final UserCredential = await firebaseAuth.signInWithEmailAndPassword(
+      final userCredential = await firebaseAuth.signInWithEmailAndPassword(
         email: email,
         password: password,
       );
-      return UserCredential;
+      return userCredential;
     } on fb_auth.FirebaseAuthException catch (e) {
       // log('error in repository signin: FirebaseAuthEception \n $e');
       throw FirebaseAuthApiFailure(e.message.toString());
@@ -101,7 +108,7 @@ class AuthRepository {
       // );
     } catch (e) {
       // log('error in repository signin: FirebaseAuthEception \n $e');
-      throw FirebaseAuthApiFailure();
+      throw const FirebaseAuthApiFailure();
 
       // throw CustomError(
       //   code: 'Exception',
@@ -111,6 +118,7 @@ class AuthRepository {
     }
   }
 
+  /// Sign out
   Future<void> signout() async {
     await firebaseAuth.signOut();
   }

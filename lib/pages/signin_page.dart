@@ -10,10 +10,10 @@ class SigninPage extends StatefulWidget {
   static const String routeName = '/signin';
 
   @override
-  _SigninPageState createState() => _SigninPageState();
+  SigninPageState createState() => SigninPageState();
 }
 
-class _SigninPageState extends State<SigninPage> {
+class SigninPageState extends State<SigninPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   AutovalidateMode _autovalidateMode = AutovalidateMode.disabled;
   String? _email, _password;
@@ -41,8 +41,12 @@ class _SigninPageState extends State<SigninPage> {
         child: BlocConsumer<SigninCubit, SigninState>(
           listener: (context, state) {
             if (state.signinStatus == SigninStatus.error) {
-              errorDialog(context, state.error.message, state.error.code,
-                  state.error.plugin);
+              errorDialog(
+                context,
+                state.error.message,
+                state.error.code,
+                state.error.plugin,
+              );
             }
           },
           builder: (context, state) {

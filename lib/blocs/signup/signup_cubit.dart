@@ -11,10 +11,12 @@ class SignupCubit extends Cubit<SignupState> {
     required this.authRepository,
   }) :
         // super(SignupState.initial());
-        super(SignupState(
-          error: CustomError.initial(),
-          signupStatus: SignupStatus.initial,
-        ));
+        super(
+          SignupState(
+            error: CustomError.initial(),
+            signupStatus: SignupStatus.initial,
+          ),
+        );
   final AuthRepository authRepository;
 
   Future<void> signup({

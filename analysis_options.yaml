@@ -1,4 +1,18 @@
 include: package:very_good_analysis/analysis_options.3.0.1.yaml
+
+analyzer:
+  errors:
+    lines_longer_than_80_chars: ignore
+
+  strong-mode:
+    implicit-dynamic: true
+  exclude: [
+      # "lib/**.gql.dart",
+      "lib/**.g.dart",
+      "lib/**.freezed.dart",
+      "lib/app/routes/app_routes.dart",
+    ]
+
 linter:
   rules:
     public_member_api_docs: false
