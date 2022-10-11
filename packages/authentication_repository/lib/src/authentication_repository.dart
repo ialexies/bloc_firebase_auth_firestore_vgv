@@ -77,6 +77,7 @@ class AuthRepository {
       //   message: e.message!,
       //   plugin: e.plugin,
       // );
+
     } catch (e) {
       log('error in repository signup:\n $e');
       // throw CustomError(

@@ -36,6 +36,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       await authRepository.signout();
     });
   }
-  late final StreamSubscription authSubsription;
+  late final StreamSubscription<fb_auth.User?> authSubsription;
   final AuthRepository authRepository;
 }

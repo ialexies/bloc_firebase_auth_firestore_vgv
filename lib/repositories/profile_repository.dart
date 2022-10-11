@@ -19,7 +19,11 @@ class ProfileRepository {
         return currentUser;
       }
 
-      throw 'User not found';
+      throw CustomError(
+        code: '',
+        message: 'User not found',
+        plugin: '',
+      );
     } on FirebaseException catch (e) {
       throw CustomError(
         code: e.code,

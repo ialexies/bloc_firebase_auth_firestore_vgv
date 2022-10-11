@@ -17,10 +17,10 @@ class SplashPage extends StatelessWidget {
             context,
             SigninPage.routeName,
             (route) {
-              return route.settings.name ==
-                      ModalRoute.of(context)!.settings.name
-                  ? true
-                  : false;
+              if ((route.settings.name ==
+                      ModalRoute.of(context)!.settings.name) ==
+                  true) return true;
+              return false;
             },
           );
         } else if (state.authStatus == AuthStatus.authenticated) {
