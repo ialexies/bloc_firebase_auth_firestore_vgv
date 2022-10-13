@@ -1,4 +1,4 @@
-import 'package:bloc_firebase_auth_firestore_vgv/blocs/signup/signup_cubit.dart';
+import 'package:bloc_firebase_auth_firestore_vgv/app/modules/signup/signup_cubit.dart';
 import 'package:bloc_firebase_auth_firestore_vgv/utils/error_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

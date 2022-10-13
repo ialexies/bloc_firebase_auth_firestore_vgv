@@ -1,5 +1,5 @@
-import 'package:bloc_firebase_auth_firestore_vgv/blocs/auth/auth_bloc.dart';
-import 'package:bloc_firebase_auth_firestore_vgv/pages/profile_page.dart';
+import 'package:bloc_firebase_auth_firestore_vgv/app/modules/auth/auth_bloc.dart';
+import 'package:bloc_firebase_auth_firestore_vgv/app/modules/profile/profile_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

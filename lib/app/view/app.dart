@@ -6,16 +6,14 @@
 // https://opensource.org/licenses/MIT.
 
 import 'package:authentication_repository/authentication_repository.dart';
-import 'package:bloc_firebase_auth_firestore_vgv/blocs/auth/auth_bloc.dart';
-import 'package:bloc_firebase_auth_firestore_vgv/blocs/profile/profile_cubit.dart';
-import 'package:bloc_firebase_auth_firestore_vgv/blocs/signin/signin_cubit.dart';
-import 'package:bloc_firebase_auth_firestore_vgv/blocs/signup/signup_cubit.dart';
-
+import 'package:bloc_firebase_auth_firestore_vgv/app/modules/auth/auth_bloc.dart';
+import 'package:bloc_firebase_auth_firestore_vgv/app/modules/profile/bloc/profile_cubit.dart';
+import 'package:bloc_firebase_auth_firestore_vgv/app/modules/signin/bloc/signin_cubit.dart';
+import 'package:bloc_firebase_auth_firestore_vgv/app/modules/signin/signin_page.dart';
+import 'package:bloc_firebase_auth_firestore_vgv/app/modules/signup/signup_cubit.dart';
+import 'package:bloc_firebase_auth_firestore_vgv/app/modules/signup/signup_page.dart';
 import 'package:bloc_firebase_auth_firestore_vgv/pages/home_page.dart';
-import 'package:bloc_firebase_auth_firestore_vgv/pages/signin_page.dart';
-import 'package:bloc_firebase_auth_firestore_vgv/pages/signup_page.dart';
 import 'package:bloc_firebase_auth_firestore_vgv/pages/splash_page.dart';
-
 import 'package:bloc_firebase_auth_firestore_vgv/repositories/profile_repository.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';

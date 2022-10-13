@@ -9,4 +9,3 @@
 library app_core;
 
 export 'src/app_core.dart';
-export 'src/utils/error_dialog.dart';
