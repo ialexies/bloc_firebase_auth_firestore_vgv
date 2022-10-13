@@ -14,7 +14,6 @@ import 'package:bloc_firebase_auth_firestore_vgv/app/modules/signup/signup_cubit
 import 'package:bloc_firebase_auth_firestore_vgv/app/modules/signup/signup_page.dart';
 import 'package:bloc_firebase_auth_firestore_vgv/pages/home_page.dart';
 import 'package:bloc_firebase_auth_firestore_vgv/pages/splash_page.dart';
-import 'package:bloc_firebase_auth_firestore_vgv/repositories/profile_repository.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';

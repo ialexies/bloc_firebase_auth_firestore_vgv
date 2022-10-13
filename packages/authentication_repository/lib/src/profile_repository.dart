@@ -5,12 +5,17 @@ import 'package:authentication_repository/src/profile_failure.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+///Profile Repository
 class ProfileRepository {
+  ///
   ProfileRepository({
     required this.firebaseFirestore,
   });
+
+  ///
   final FirebaseFirestore firebaseFirestore;
 
+  /// Get User Profile from firestore
   Future<my_auth_repo.User> getProfile({required String uid}) async {
     try {
       final DocumentSnapshot userDoc = await usersRef.doc(uid).get();
