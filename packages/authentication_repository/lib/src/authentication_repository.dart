@@ -1,7 +1,8 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:developer';
 
+import 'package:authentication_repository/src/models/auth_failure.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-
 import 'package:firebase_auth/firebase_auth.dart' as fb_auth;
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -71,20 +72,17 @@ class AuthRepository {
         'rank': 'bronze',
       });
     } on fb_auth.FirebaseAuthException catch (e) {
-      log('error in repository signup: FirebaseAuthEception \n $e');
-      // throw CustomError(
-      //   code: e.code,
-      //   message: e.message!,
-      //   plugin: e.plugin,
-      // );
-
+      throw AuthFailure(
+        code: 'Exception',
+        message: e.toString(),
+        plugin: 'flutter_error/server_error',
+      );
     } catch (e) {
-      log('error in repository signup:\n $e');
-      // throw CustomError(
-      //   code: 'Exception',
-      //   message: e.toString(),
-      //   plugin: 'flutter_error/server_error',
-      // );
+      throw AuthFailure(
+        code: 'Exception',
+        message: e.toString(),
+        plugin: 'flutter_error/server_error',
+      );
     }
   }
 
@@ -100,22 +98,18 @@ class AuthRepository {
       );
       return userCredential;
     } on fb_auth.FirebaseAuthException catch (e) {
-      // log('error in repository signin: FirebaseAuthEception \n $e');
-      throw FirebaseAuthApiFailure(e.message.toString());
-      // throw CustomError(
-      //   code: e.code,
-      //   message: e.message!,
-      //   plugin: e.plugin,
-      // );
+      // throw FirebaseAuthApiFailure(e.message.toString());
+      throw AuthFailure(
+        code: e.code,
+        message: e.message,
+        plugin: e.plugin,
+      );
     } catch (e) {
-      // log('error in repository signin: FirebaseAuthEception \n $e');
-      throw const FirebaseAuthApiFailure();
-
-      // throw CustomError(
-      //   code: 'Exception',
-      //   message: e.toString(),
-      //   plugin: 'flutter_error/server_error',
-      // );
+      throw AuthFailure(
+        code: 'Exception',
+        message: e.toString(),
+        plugin: 'flutter_error/server_error',
+      );
     }
   }
 
