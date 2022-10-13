@@ -1,7 +1,8 @@
 import 'package:authentication_repository/authentication_repository.dart'
     as my_auth_repo;
-import 'package:bloc_firebase_auth_firestore_vgv/constants/db_constants.dart';
-import 'package:bloc_firebase_auth_firestore_vgv/models/custom_error.dart';
+import 'package:authentication_repository/constants/db_constants.dart';
+import 'package:authentication_repository/src/profile_failure.dart';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class ProfileRepository {
@@ -19,19 +20,19 @@ class ProfileRepository {
         return currentUser;
       }
 
-      throw CustomError(
+      throw ProfileFailure(
         code: '',
         message: 'User not found',
         plugin: '',
       );
     } on FirebaseException catch (e) {
-      throw CustomError(
+      throw ProfileFailure(
         code: e.code,
         message: e.message!,
         plugin: e.plugin,
       );
     } catch (e) {
-      throw CustomError(
+      throw ProfileFailure(
         code: 'Exception',
         message: e.toString(),
         plugin: 'flutter_error/server_error',
