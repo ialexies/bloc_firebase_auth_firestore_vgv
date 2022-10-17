@@ -18,6 +18,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -61,19 +62,25 @@ class App extends StatelessWidget {
             ),
           ),
         ],
-        child: MaterialApp(
-          title: 'Firebase Auth',
-          debugShowCheckedModeBanner: false,
-          theme: ThemeData(
-            primarySwatch: Colors.blue,
-          ),
-          home: const SplashPage(),
-          routes: {
-            SignupPage.routeName: (context) => const SignupPage(),
-            SigninPage.routeName: (context) => const SigninPage(),
-            HomePage.routeName: (context) => const HomePage(),
-          },
-        ),
+        child: ScreenUtilInit(
+            designSize: const Size(1080, 2460),
+            minTextAdapt: true,
+            splitScreenMode: true,
+            builder: (context, _) {
+              return MaterialApp(
+                title: 'Firebase Auth ${_.toString()}',
+                debugShowCheckedModeBanner: false,
+                theme: ThemeData(
+                  primarySwatch: Colors.blue,
+                ),
+                home: const SplashPage(),
+                routes: {
+                  SignupPage.routeName: (context) => const SignupPage(),
+                  SigninPage.routeName: (context) => const SigninPage(),
+                  HomePage.routeName: (context) => const HomePage(),
+                },
+              );
+            }),
       ),
     );
   }
