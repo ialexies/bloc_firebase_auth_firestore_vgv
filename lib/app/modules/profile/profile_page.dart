@@ -7,6 +7,7 @@ import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -36,11 +37,20 @@ class ProfilePageState extends State<ProfilePage> {
       ),
       body: BlocConsumer<ProfileCubit, ProfileState>(
         listener: (context, state) {
-          if (state.profileStatus == ProfileStatus.error) {
-            //TODO(ialexies): add error for this eception
-            log('error in profile status');
-            // errorDialog(context, state.error);
-          }
+          // context.read<AuthBloc>().;
+          // context.read<AuthBloc>().add(SignoutRequestedEvent());
+
+          // context.read<AuthBloc>().add(UpdatePhotoUrlEvent());
+
+          // Future<void> updateProfilePhoto(XFile? img) async {
+          // print(state.user.profileImage);
+          // state.user.profileImage = img?.path ?? '';
+          // }
+          // if (state.profileStatus == ProfileStatus.error) {
+          //   //TODO(ialexies): add error for this eception
+          //   log('error in profile status');
+          //   // errorDialog(context, state.error);
+          // }
         },
         builder: (context, state) {
           if (state.profileStatus == ProfileStatus.initial) {
@@ -135,7 +145,27 @@ class ProfilePageState extends State<ProfilePage> {
                               width: 600.w,
                               height: 150.w,
                               child: TextButton(
-                                onPressed: () => print('sdsdsd'),
+                                onPressed: () async {
+                                  XFile? imgFile = XFile('');
+                                  try {
+                                    imgFile = await ImagePicker().pickImage(
+                                      source: ImageSource.camera,
+                                      preferredCameraDevice: CameraDevice.front,
+                                    );
+                                  } catch (e) {}
+
+                                  if (imgFile == null) return;
+
+                                  // context.read<AuthBloc>().add(
+                                  //       UpdatePhotoUrlEvent(
+                                  //         photoUrl: imgFile.path,
+                                  //       ),
+                                  //     );
+
+                                  // await context
+                                  //     .read<ProfileCubit>()
+                                  //     .updateProfilePhoto(await imgFile);
+                                },
                                 child: const Text(
                                   'Edit',
                                   textAlign: TextAlign.center,

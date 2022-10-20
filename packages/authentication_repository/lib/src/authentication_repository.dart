@@ -117,4 +117,8 @@ class AuthRepository {
   Future<void> signout() async {
     await firebaseAuth.signOut();
   }
+
+  Future<void> updatePhotoUrl(String photoUrl) async {
+    await firebaseAuth.currentUser?.updatePhotoURL(photoUrl);
+  }
 }
