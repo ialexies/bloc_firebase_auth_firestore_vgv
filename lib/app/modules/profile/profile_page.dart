@@ -149,8 +149,9 @@ class UserDataBuilder extends StatelessWidget {
         UserDataRowBuilder(
           state,
           Icons.add_chart_sharp,
-          toBeginningOfSentenceCase(state.user.point.toString()).toString(),
+          '${toBeginningOfSentenceCase(state.user.point.toString())} Points',
         ),
+        const Divider(),
         UserDataRowBuilder(
           state,
           Icons.person,
