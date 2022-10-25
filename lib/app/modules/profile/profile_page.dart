@@ -34,7 +34,16 @@ class ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Profile'),
+        title: const Text('My Profile'),
+        centerTitle: true,
+        actions: [
+          IconButton(
+            onPressed: () {
+              context.read<AuthBloc>().add(SignoutRequestedEvent());
+            },
+            icon: const Icon(Icons.exit_to_app),
+          ),
+        ],
       ),
       body: BlocConsumer<ProfileCubit, ProfileState>(
         listener: (context, state) {
@@ -207,6 +216,8 @@ class UserDataRowBuilder extends StatelessWidget {
               size: 20,
               color: Colors.grey,
             ),
+            splashColor: Colors.amberAccent.withOpacity(.5),
+            splashRadius: 26,
           ),
       ],
     );
