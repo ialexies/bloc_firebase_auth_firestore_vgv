@@ -100,7 +100,8 @@ class ProfilePageState extends State<ProfilePage> {
                   child: Column(
                     children: [
                       Text(
-                        toBeginningOfSentenceCase(state.user.name).toString(),
+                        toBeginningOfSentenceCase(state.user.firstName)
+                            .toString(),
                         style: TextStyle(
                           fontSize: 140.sp,
                         ),
@@ -144,20 +145,31 @@ class UserDataBuilder extends StatelessWidget {
         UserDataRowBuilder(
           state,
           Icons.star,
-          toBeginningOfSentenceCase(state.user.rank).toString(),
+          Text(toBeginningOfSentenceCase(state.user.rank).toString()),
         ),
         const Divider(),
         UserDataRowBuilder(
           state,
           Icons.mail,
-          toBeginningOfSentenceCase(state.user.email).toString(),
+          state.user.lastName == null
+              ? Text(
+                  'Last Name',
+                  style: TextStyle(
+                    color: Colors.grey.shade500,
+                    fontWeight: FontWeight.w300,
+                  ),
+                )
+              : Text(
+                  toBeginningOfSentenceCase(state.user.lastName)!,
+                ),
           editable: true,
         ),
         const Divider(),
         UserDataRowBuilder(
           state,
           Icons.add_chart_sharp,
-          '${toBeginningOfSentenceCase(state.user.point.toString())} Points',
+          Text(
+              '${toBeginningOfSentenceCase(state.user.point.toString())} Points'),
         ),
         const Divider(),
       ],
@@ -175,7 +187,7 @@ class UserDataRowBuilder extends StatelessWidget {
   });
   final ProfileState state;
   final IconData _name;
-  final String _val;
+  final Widget _val;
   final bool? editable;
   @override
   Widget build(BuildContext context) {
@@ -183,12 +195,19 @@ class UserDataRowBuilder extends StatelessWidget {
       children: [
         Icon(_name),
         const SizedBox(width: 10),
-        Text(_val),
+        _val,
         const Spacer(),
         if (editable == null)
           const SizedBox.shrink()
         else
-          const Icon(Icons.edit),
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(
+              Icons.edit,
+              size: 20,
+              color: Colors.grey,
+            ),
+          ),
       ],
     );
   }

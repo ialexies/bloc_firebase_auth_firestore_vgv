@@ -20,7 +20,9 @@ class SignupCubit extends Cubit<SignupState> {
   final AuthRepository authRepository;
 
   Future<void> signup({
-    required String name,
+    required String firstName,
+    String? lastName,
+    String? age,
     required String email,
     required String password,
   }) async {
@@ -28,7 +30,9 @@ class SignupCubit extends Cubit<SignupState> {
 
     try {
       await authRepository.signup(
-        name: name,
+        firstName: firstName,
+        lastName: lastName,
+        age: age,
         email: email,
         password: password,
       );

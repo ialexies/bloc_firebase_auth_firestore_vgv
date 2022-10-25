@@ -52,7 +52,9 @@ class AuthRepository {
 
   /// Firebase Signup
   Future<void> signup({
-    required String name,
+    required String firstName,
+    String? lastName = '',
+    String? age = '',
     required String email,
     required String password,
   }) async {
@@ -65,7 +67,9 @@ class AuthRepository {
       final signedInUser = userCredential.user!;
 
       await usersRef.doc(signedInUser.uid).set({
-        'name': name,
+        'firstName': firstName,
+        'lastName': lastName,
+        'age': age,
         'email': email,
         'profileImage': 'https://picsum.photos/300',
         'point': 0,
