@@ -112,6 +112,13 @@ class ProfilePageState extends State<ProfilePage> {
                           color: Colors.black54,
                         ),
                       ),
+                      Text(
+                        toBeginningOfSentenceCase(state.user.id).toString(),
+                        style: TextStyle(
+                          fontSize: 26.sp,
+                          color: Colors.black54,
+                        ),
+                      ),
                       const SizedBox(height: 30),
                       UserDataBuilder(state),
                     ],
@@ -144,6 +151,7 @@ class UserDataBuilder extends StatelessWidget {
           state,
           Icons.mail,
           toBeginningOfSentenceCase(state.user.email).toString(),
+          editable: true,
         ),
         const Divider(),
         UserDataRowBuilder(
@@ -152,22 +160,23 @@ class UserDataBuilder extends StatelessWidget {
           '${toBeginningOfSentenceCase(state.user.point.toString())} Points',
         ),
         const Divider(),
-        UserDataRowBuilder(
-          state,
-          Icons.person,
-          toBeginningOfSentenceCase(state.user.id).toString(),
-        ),
       ],
     );
   }
 }
 
 class UserDataRowBuilder extends StatelessWidget {
-  const UserDataRowBuilder(this.state, this._name, this._val, {super.key});
+  const UserDataRowBuilder(
+    this.state,
+    this._name,
+    this._val, {
+    this.editable,
+    super.key,
+  });
   final ProfileState state;
   final IconData _name;
   final String _val;
-
+  final bool? editable;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -175,6 +184,11 @@ class UserDataRowBuilder extends StatelessWidget {
         Icon(_name),
         const SizedBox(width: 10),
         Text(_val),
+        const Spacer(),
+        if (editable == null)
+          const SizedBox.shrink()
+        else
+          const Icon(Icons.edit),
       ],
     );
   }
