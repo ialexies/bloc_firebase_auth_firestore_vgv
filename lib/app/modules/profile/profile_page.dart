@@ -173,6 +173,22 @@ class UserDataBuilder extends StatelessWidget {
                 ),
           editable: true,
         ),
+        UserDataRowBuilder(
+          state,
+          Icons.mail,
+          state.user.age == null
+              ? Text(
+                  'Last Name',
+                  style: TextStyle(
+                    color: Colors.grey.shade500,
+                    fontWeight: FontWeight.w300,
+                  ),
+                )
+              : Text(
+                  toBeginningOfSentenceCase(state.user.age)!,
+                ),
+          editable: true,
+        ),
         const Divider(),
         UserDataRowBuilder(
           state,
