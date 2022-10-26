@@ -156,7 +156,6 @@ class UserDataBuilder extends StatelessWidget {
           Icons.star,
           Text(toBeginningOfSentenceCase(state.user.rank).toString()),
         ),
-        const Divider(),
         UserDataRowBuilder(
           state,
           Icons.mail,
@@ -189,14 +188,12 @@ class UserDataBuilder extends StatelessWidget {
                 ),
           editable: true,
         ),
-        const Divider(),
         UserDataRowBuilder(
           state,
           Icons.add_chart_sharp,
           Text(
               '${toBeginningOfSentenceCase(state.user.point.toString())} Points'),
         ),
-        const Divider(),
       ],
     );
   }
@@ -216,25 +213,30 @@ class UserDataRowBuilder extends StatelessWidget {
   final bool? editable;
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return Column(
       children: [
-        Icon(_name),
-        const SizedBox(width: 10),
-        _val,
-        const Spacer(),
-        if (editable == null)
-          const SizedBox.shrink()
-        else
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.edit,
-              size: 20,
-              color: Colors.grey,
-            ),
-            splashColor: Colors.amberAccent.withOpacity(.5),
-            splashRadius: 26,
-          ),
+        Row(
+          children: [
+            Icon(_name),
+            const SizedBox(width: 10),
+            _val,
+            const Spacer(),
+            if (editable == null)
+              const SizedBox.shrink()
+            else
+              IconButton(
+                onPressed: () {},
+                icon: const Icon(
+                  Icons.edit,
+                  size: 20,
+                  color: Colors.grey,
+                ),
+                splashColor: Colors.amberAccent.withOpacity(.5),
+                splashRadius: 26,
+              ),
+          ],
+        ),
+        const Divider(),
       ],
     );
   }
