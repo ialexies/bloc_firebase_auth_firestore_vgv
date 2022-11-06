@@ -5,6 +5,7 @@ import 'package:bloc/bloc.dart';
 import 'package:bloc_firebase_auth_firestore_vgv/models/custom_error.dart';
 
 import 'package:equatable/equatable.dart';
+import 'package:image_picker/image_picker.dart';
 
 part 'profile_state.dart';
 

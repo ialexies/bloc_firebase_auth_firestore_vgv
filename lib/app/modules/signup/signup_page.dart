@@ -16,7 +16,7 @@ class SignupPageState extends State<SignupPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   AutovalidateMode _autovalidateMode = AutovalidateMode.disabled;
   final _passwordController = TextEditingController();
-  String? _name, _email, _password;
+  String? _firstName, _lastName, _age, _email, _password;
 
   void _submit() {
     setState(() {
@@ -30,7 +30,9 @@ class SignupPageState extends State<SignupPage> {
     form.save();
 
     context.read<SignupCubit>().signup(
-          name: _name!,
+          firstName: _firstName!,
+          lastName: _lastName,
+          age: _age,
           email: _email!,
           password: _password!,
         );
@@ -74,12 +76,12 @@ class SignupPageState extends State<SignupPage> {
                         decoration: const InputDecoration(
                           border: OutlineInputBorder(),
                           filled: true,
-                          labelText: 'Name',
+                          labelText: 'First Name',
                           prefixIcon: Icon(Icons.account_box),
                         ),
                         validator: (String? value) {
                           if (value == null || value.trim().isEmpty) {
-                            return 'Name required';
+                            return 'First Name is required';
                           }
                           if (value.trim().length < 2) {
                             return 'Name must be at least 2 characters';
@@ -87,7 +89,7 @@ class SignupPageState extends State<SignupPage> {
                           return null;
                         },
                         onSaved: (String? value) {
-                          _name = value;
+                          _firstName = value;
                         },
                       ),
                       const SizedBox(height: 20),

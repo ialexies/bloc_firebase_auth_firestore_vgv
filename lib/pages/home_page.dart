@@ -34,12 +34,6 @@ class HomePageState extends State<HomePage> {
               },
               icon: const Icon(Icons.account_circle),
             ),
-            IconButton(
-              onPressed: () {
-                context.read<AuthBloc>().add(SignoutRequestedEvent());
-              },
-              icon: const Icon(Icons.exit_to_app),
-            ),
           ],
         ),
         body: Center(

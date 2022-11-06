@@ -4,15 +4,19 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class User {
   String id;
-  String name;
+  String firstName;
+  String? lastName;
   String email;
+  String? age;
   String profileImage;
   int point;
   String rank;
   User({
     required this.id,
-    required this.name,
+    required this.firstName,
+    this.lastName,
     required this.email,
+    this.age,
     required this.profileImage,
     required this.point,
     required this.rank,
@@ -24,11 +28,13 @@ class User {
 
     return User(
       id: userDoc.id,
-      name: userData!['name'] as String,
+      firstName: userData!['firstName'] as String,
+      lastName: userData['lastName'] as String?,
       email: userData['email'] as String,
+      age: userData['age'] as String?,
       profileImage: userData['profileImage'] as String,
       point: userData['point'] as int,
-      rank: userData['rank'] as String,
+      rank: userData['rank'].toString(),
     );
   }
 
@@ -36,8 +42,10 @@ class User {
   factory User.initialUser() {
     return User(
       id: '',
-      name: '',
+      firstName: '',
+      lastName: '',
       email: '',
+      age: '',
       profileImage: '',
       point: -1,
       rank: '',
