@@ -1,6 +1,8 @@
+import 'dart:developer';
+
 import 'package:authentication_repository/authentication_repository.dart';
 import 'package:bloc/bloc.dart';
-
+import 'package:authentication_repository/src/models/auth_failure.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 part 'signin_state.dart';
 part 'signin_cubit.freezed.dart';
@@ -20,12 +22,22 @@ class SigninCubit extends Cubit<SigninState> {
 
       emit(state.copyWith(signinStatus: SigninStatus.success));
     } on FirebaseAuthApiFailure catch (e) {
+      log('signin cubit- ${3}');
       emit(
         state.copyWith(
           signinStatus: SigninStatus.error,
           error: e,
         ),
       );
+    } on AuthFailure catch (e) {
+      emit(state.copyWith(
+          signinStatus: SigninStatus.error,
+          error: FirebaseAuthApiFailure(e.message.toString(), e.code, '')));
+    } catch (e) {
+      emit(state.copyWith(
+          signinStatus: SigninStatus.error,
+          error: const FirebaseAuthApiFailure(
+              'Unknown Authentication error', 'Authentication error', '')));
     }
   }
 }

@@ -50,6 +50,25 @@ class AuthRepository {
   ///
   Stream<fb_auth.User?> get user => firebaseAuth.userChanges();
 
+  Future<void> currentUserChangeListener() async {
+    FirebaseAuth.instance.authStateChanges().listen((User? user) {
+      FirebaseAuth.instance.currentUser?.reload();
+
+      if (user == null) {
+        // isLoggedin.value = false;
+        // token.value = '';
+
+        // if (Get.currentRoute != Routes.signin) {
+        //   signOut();
+        //   Get.offAllNamed(Routes.signin);
+        // }
+      } else {
+        // isLoggedin.value = true;
+        // userId.value = user.uid;
+      }
+    });
+  }
+
   /// Firebase Signup
   Future<void> signup({
     required String firstName,
@@ -103,6 +122,7 @@ class AuthRepository {
       return userCredential;
     } on fb_auth.FirebaseAuthException catch (e) {
       // throw FirebaseAuthApiFailure(e.message.toString());
+
       throw AuthFailure(
         code: e.code,
         message: e.message,
