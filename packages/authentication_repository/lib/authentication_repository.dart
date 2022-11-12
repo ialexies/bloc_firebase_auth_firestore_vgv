@@ -9,5 +9,6 @@
 library authentication_repository;
 
 export 'src/authentication_repository.dart';
+export 'src/models/auth_failure.dart';
 export 'src/models/user_model.dart';
 export 'src/profile_repository.dart';
